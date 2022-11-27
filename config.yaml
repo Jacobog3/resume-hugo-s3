@@ -64,7 +64,7 @@ Menus:
 
 params:
   title: "Jacobo Gonzalez"
-  description: My Professional and Tech site as Resume and Portfolio
+  description: Jacobo Gonzalez Solution Architech e Ingeniero DevOps desde Guatemala para el Mundo
   # staticPath: ""  # The path to serve the static files from
   favicon: "/images/fav.png"
 
