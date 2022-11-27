@@ -339,8 +339,13 @@ params:
     enable: true
     # title: "Custom Name"
     items:
-      - title: Hugo Profile
-        content: A highly customizable and mobile first Hugo template for personal portfolio and blog.
+      - title: My Profile
+        content: |
+          Using Hugo as a resource for building my personal resume.
+          Technlogies used: 
+            - AWS: Cloudformation, S3, Route53
+            - Github: Github Actions for CI/CD
+            - Hugo: Frontend Framework
         image: /images/projects/profile.png
         featured:
           name: Visit Site
