@@ -64,7 +64,7 @@ Menus:
 
 params:
   title: "Jacobo Gonzalez"
-  description: Jacobo Gonzalez Solution Architech e Ingeniero DevOps desde Guatemala para el Mundo
+  description: Jacobo Gonzalez Solution Architech e Ingeniero Cloud desde Guatemala para el Mundo
   # staticPath: ""  # The path to serve the static files from
   favicon: "/images/fav.png"
 
@@ -128,7 +128,7 @@ params:
     button:
       enable: true
       name: "Resume"
-      url: "https://resume.io/r/JmlnzFvMp"
+      url: "https://www.kickresume.com/cv/3L5o80/"
       download: true
       newPage: true
     socialLinks:
@@ -166,7 +166,7 @@ params:
     enable: true
     # title: "Custom Name"
     items:
-      - job: "DevOps Engineer"
+      - job: "Cloud Engineer"
         company: "Triumph Tech"
         companyUrl: "https://www.triumphtech.com"
         date: "Apr 2022 - present"
