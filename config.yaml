@@ -106,7 +106,7 @@ params:
   # If you want to customize the menu, you can change it here
   navbar:
     align: ms-auto # Left: ms-auto | center: mx-auto | right: me-auto | Default: ms-auto
-    brandLogo: "/images/logo2.png" # Logo for the brand | default is the favicon variable
+    brandLogo: "/images/logo4.png" # Logo for the brand | default is the favicon variable
     brandName: "Jacobo Gonzalez" # Brand name for the brand | default is the title variable
 
   #   menus:
@@ -138,7 +138,7 @@ params:
         - icon: fab fa-twitter
           url: https://twitter.com/jacobog3X
       customIcons:
-        - icon: /images/logo2.png
+        - icon: /images/logo4.png
           url: "http://jacobogonzalez.com"
 
   # About
