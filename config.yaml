@@ -136,7 +136,7 @@ params:
         - icon: fab fa-github
           url: https://github.com/Jacobog3
         - icon: fab fa-twitter
-          url: https://twitter.com/jacobog3X
+          url: https://twitter.com/itsme_jacobo
       customIcons:
         - icon: /images/logo4.png
           url: "http://jacobogonzalez.com"
