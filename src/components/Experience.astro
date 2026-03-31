@@ -1,0 +1,83 @@
+---
+import type { SiteContent } from '../i18n/en';
+
+interface Props {
+  experience: SiteContent['experience'];
+}
+
+const { experience } = Astro.props;
+---
+
+<section id="experience" class="section" style="background: var(--bg-secondary);">
+  <div class="section-inner">
+    <p class="section-kicker">Career</p>
+    <h2 class="section-title">{experience.title}</h2>
+
+    <div style="margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0;">
+      {experience.items.map((item, idx) => (
+        <div class="timeline-item" style="padding-bottom: 2.5rem;">
+          <div class="card" style="padding: 1.5rem;">
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 0.5rem;
+                margin-bottom: 0.75rem;
+              "
+            >
+              <div>
+                <h3
+                  style="
+                    font-family: var(--font-sans);
+                    font-size: 1rem;
+                    font-weight: 700;
+                    color: var(--text);
+                    margin: 0 0 0.2rem 0;
+                  "
+                >
+                  {item.job}
+                </h3>
+                <a
+                  href={item.companyUrl}
+                  target="_blank"
+                  rel="noopener"
+                  style="
+                    font-family: var(--font-sans);
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    color: var(--primary);
+                    text-decoration: none;
+                  "
+                >
+                  {item.company} ↗
+                </a>
+              </div>
+              <span
+                style="
+                  font-family: var(--font-sans);
+                  font-size: 0.75rem;
+                  font-weight: 500;
+                  color: var(--text-secondary);
+                  white-space: nowrap;
+                  background: var(--bg-secondary);
+                  padding: 0.2rem 0.75rem;
+                  border-radius: 999px;
+                  border: 1px solid var(--border);
+                "
+              >
+                {item.date}
+              </span>
+            </div>
+            <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
+              {item.content.map((point) => (
+                <li style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">{point}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

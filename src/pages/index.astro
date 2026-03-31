@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+import Certifications from '../components/Certifications.astro';
+import Education from '../components/Education.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+import { getContent } from '../i18n/index';
+
+const t = getContent('en');
+---
+
+<Layout
+  title="Jacobo Gonzalez | Cloud Architect & DevOps Engineer"
+  description="Cloud architect and DevOps engineer from Guatemala helping teams build resilient AWS platforms, automation, and migration foundations."
+  lang="en"
+>
+  <Navbar nav={t.nav} />
+  <main>
+    <Hero hero={t.hero} />
+    <About about={t.about} />
+    <Experience experience={t.experience} />
+    <Certifications certifications={t.certifications} />
+    <Education education={t.education} />
+    <Projects projects={t.projects} />
+    <Contact contact={t.contact} />
+  </main>
+</Layout>

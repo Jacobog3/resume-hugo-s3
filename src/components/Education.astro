@@ -1,0 +1,89 @@
+---
+import type { SiteContent } from '../i18n/en';
+
+interface Props {
+  education: SiteContent['education'];
+}
+
+const { education } = Astro.props;
+---
+
+<section id="education" class="section">
+  <div class="section-inner">
+    <p class="section-kicker">Academic background</p>
+    <h2 class="section-title">{education.title}</h2>
+
+    <div
+      style="
+        margin-top: 2.5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.25rem;
+      "
+    >
+      {education.items.map((item) => (
+        <div class="card" style="padding: 1.5rem;">
+          <div style="margin-bottom: 0.75rem;">
+            <h3
+              style="
+                font-family: var(--font-sans);
+                font-size: 0.95rem;
+                font-weight: 700;
+                color: var(--text);
+                margin: 0 0 0.3rem 0;
+                line-height: 1.3;
+              "
+            >
+              {item.title}
+            </h3>
+            <a
+              href={item.schoolUrl}
+              target="_blank"
+              rel="noopener"
+              style="
+                font-family: var(--font-sans);
+                font-size: 0.8rem;
+                color: var(--primary);
+                text-decoration: none;
+                font-weight: 500;
+              "
+            >
+              {item.school}
+            </a>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+            <span
+              style="
+                font-family: var(--font-sans);
+                font-size: 0.75rem;
+                color: var(--text-secondary);
+              "
+            >
+              {item.date}
+            </span>
+            <span
+              style="
+                font-family: var(--font-sans);
+                font-size: 0.75rem;
+                font-weight: 600;
+                color: var(--primary);
+                background: rgba(15,118,110,0.08);
+                padding: 0.15rem 0.6rem;
+                border-radius: 999px;
+              "
+            >
+              {item.gpa}
+            </span>
+          </div>
+
+          <ul style="margin: 0; padding-left: 1.1rem;">
+            {item.notes.map((note) => (
+              <li style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">{note}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,85 @@
+---
+import type { SiteContent } from '../i18n/en';
+
+interface Props {
+  about: SiteContent['about'];
+}
+
+const { about } = Astro.props;
+const paragraphs = about.content.split('\n\n').filter(Boolean);
+---
+
+<section id="about" class="section">
+  <div class="section-inner">
+    <div
+      style="
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        align-items: start;
+      "
+      class="about-grid"
+    >
+
+      <!-- Profile photo -->
+      <div style="display: flex; justify-content: center;">
+        <div style="position: relative; width: min(280px, 70vw);">
+          <img
+            src="/images/profile.jpg"
+            alt="Jacobo Gonzalez"
+            style="
+              width: 100%;
+              border-radius: var(--radius);
+              aspect-ratio: 4/5;
+              object-fit: cover;
+              object-position: center top;
+              border: 1px solid var(--border);
+              box-shadow: var(--shadow);
+            "
+          />
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div>
+        <p class="section-kicker">{about.title}</p>
+        <h2 class="section-title">{about.title}</h2>
+
+        <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+          {paragraphs.map((p) => (
+            <p style="color: var(--text-secondary); line-height: 1.75; margin: 0;">{p}</p>
+          ))}
+        </div>
+
+        <!-- Skills -->
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+          "
+        >
+          {about.skillsTitle}
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          {about.skills.map((skill) => (
+            <span class="skill-pill">{skill}</span>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (min-width: 768px) {
+    .about-grid {
+      grid-template-columns: 280px 1fr !important;
+    }
+  }
+</style>

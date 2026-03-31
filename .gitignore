@@ -1,13 +1,19 @@
-# Generated files by hugo
-/public/
+# Astro build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store
+
+# Hugo leftovers (no longer used)
 /resources/_gen/
-/assets/jsconfig.json
 hugo_stats.json
-
-# Executable may be added to repository
-hugo.exe
-hugo.darwin
-hugo.linux
-
-# Temporary lock file while building
 /.hugo_build.lock

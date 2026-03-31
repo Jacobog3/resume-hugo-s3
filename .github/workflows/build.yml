@@ -9,26 +9,46 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: true  # Fetch Hugo themes 
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+      - uses: actions/checkout@v4
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          hugo-version: 'latest'
-          extended: true
+          node-version: '22'
+          cache: 'npm'
 
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Build website
-        run: hugo --minify
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Hugo deploy static site to S3 bucket and invalidate Cloudfront cache
-        run: hugo deploy --maxDeletes -1 --invalidateCDN
+      - name: Build website
+        run: npm run build
+
+      - name: Deploy to S3
+        run: |
+          aws s3 sync dist/ s3://jacobogonzalez-hugo-website \
+            --delete \
+            --cache-control "max-age=630720000, no-transform, public" \
+            --exclude "*.html" \
+            --exclude "*.xml" \
+            --exclude "*.json"
+          aws s3 sync dist/ s3://jacobogonzalez-hugo-website \
+            --delete \
+            --cache-control "no-cache, no-store, must-revalidate" \
+            --exclude "*" \
+            --include "*.html" \
+            --include "*.xml" \
+            --include "*.json"
+
+      - name: Invalidate CloudFront cache
+        if: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID != '' }}
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
